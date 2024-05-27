@@ -80,9 +80,11 @@ covLinux() {
 	llvm-cov \
 		report \
 		--ignore-filename-regex='\.build/|Tests/' \
+		--format=text \
 		--summary-only \
 		"${prefix}" \
-		-instr-profile ./.build/debug/codecov/default.profdata
+		-instr-profile ./.build/debug/codecov/default.profdata |
+		tee ./cov.txt
 }
 
 numcpus=8
